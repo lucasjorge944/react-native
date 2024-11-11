@@ -1,0 +1,140 @@
+const black = "#000000";
+const white = "#FFFFFF";
+
+const ceruleam = {
+    100: "#3F8DA7",
+    200: "#2C829E",
+    300: "#177694",
+    400: "#006889",
+    500: "#005F7D",
+    600: "#005672",
+    700: "#004E68",
+    contrast: {
+        100: black,
+        200: black,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white
+    }
+};
+const orange = {
+    100: "#FAB940",
+    200: "#F9B22D",
+    300: "#F8AA18",
+    400: "#F7A101",
+    500: "#E19201",
+    600: "#CD8501",
+    700: "#BA7901",
+    contrast: {
+        100: black,
+        200: black,
+        300: black,
+        400: black,
+        500: black,
+        600: black,
+        700: black
+    }
+};
+const gray = {
+    100: "#868683",
+    200: "#7A7A77",
+    300: "#6D6D69",
+    400: "#5E5E5A",
+    500: "#555552",
+    600: "#4D4D4B",
+    700: "#464644",
+    contrast: {
+        100: black,
+        200: black,
+        300: black,
+        400: white,
+        500: white,
+        600: white,
+        700: white
+    }
+};
+const lavender = {
+    200: "#E6ECFA",
+    300: "#E4EAFA",
+    400: "#E1E8FA",
+    500: "#CDD3E3",
+    600: "#BAC0CE",
+    contrast: {
+        100: black,
+        200: black,
+        300: black,
+        400: white,
+        500: white,
+        600: white
+    }
+};
+
+export const lightTheme = {
+    background: lavender[400],
+    tabBar: {
+        bg: white,
+        text: ceruleam[600],
+        active: orange[500]
+    },
+    text: ceruleam[400],
+    textSecondary: gray[500],
+    input: {
+        bg: white,
+        text: gray[500],
+        placeholder: gray[100],
+        border: gray[400],
+        borderFocused: gray[500],
+        shadow: ceruleam[100]
+    },
+    button: {
+        primary: {
+            bg: ceruleam[200],
+            text: white,
+            shadow: ceruleam[100]
+        },
+        secondary: {
+            bg: lavender[200],
+            text: lavender.contrast[500],
+            shadow: lavender[200]
+        }
+    },
+    google: "#EB4336",
+    facebook: "#0866FF"
+};
+
+export const darkTheme = {
+    background: lavender[400],
+    tabBar: {
+        bg: white,
+        text: ceruleam[600],
+        active: orange[500]
+    },
+    text: ceruleam[600],
+    textSecondary: gray[500],
+    input: {
+        bg: white,
+        text: gray[500],
+        placeholder: gray[500],
+        border: gray[400],
+        borderFocused: gray[500],
+        shadow: ceruleam[100]
+    },
+    button: {
+        primary: {
+            bg: ceruleam[200],
+            text: white,
+            shadow: ceruleam[100]
+        },
+        secondary: {
+            bg: lavender[200],
+            text: lavender.contrast[500],
+            shadow: lavender[200]
+        }
+    },
+    google: "#EB4336",
+    facebook: "#0866FF"
+};
+
+export type PalleteProps = typeof lightTheme;
