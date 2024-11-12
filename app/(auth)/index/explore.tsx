@@ -1,4 +1,4 @@
-import { Text, StyleSheet, ScrollView } from "react-native";
+import { Text, StyleSheet, ScrollView, View } from "react-native";
 import React, { useState } from "react";
 import { Stack } from "expo-router";
 import ExploreHeader, { ChipType } from "../../shared/components/ExploreHeader";
@@ -6,6 +6,8 @@ import ListNearBy from "../../shared/components/ListNearBy";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import { StatusBar } from "expo-status-bar";
+import Tokens from "@/constants/Tokens";
+import ListTopRatings from "@/app/shared/components/ListTopRatings";
 
 const Explore = () => {
     const [chip, setChip] = useState<ChipType>({
@@ -22,6 +24,7 @@ const Explore = () => {
     return (
         <ScrollView
             style={{ ...styles.container, backgroundColor: theme.background }}
+            showsVerticalScrollIndicator={false}
         >
             <StatusBar style="dark"></StatusBar>
             <Stack.Screen
@@ -31,7 +34,15 @@ const Explore = () => {
                     )
                 }}
             />
-            <ListNearBy />
+            <View
+                style={{
+                    gap: Tokens.spacing[24],
+                    paddingBottom: Tokens.spacing[24]
+                }}
+            >
+                <ListNearBy />
+                <ListTopRatings />
+            </View>
             <Text>{chip?.initialText}</Text>
         </ScrollView>
     );
@@ -40,8 +51,8 @@ const Explore = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 150,
-        paddingTop: 30
+        marginTop: Tokens.headerHeigth,
+        paddingTop: Tokens.spacing[24]
     }
 });
 

@@ -32,10 +32,10 @@ const Login = () => {
     const login = async () => {
         const result = await onLogin!(email, password);
         if (result && result.error) {
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
             alert(result.msg);
         } else {
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
         }
     };
 
@@ -62,12 +62,12 @@ const Login = () => {
             <View style={{ gap: Tokens.spacing[8] }}>
                 <Text style={styles.title}>Entrar</Text>
                 <Text style={styles.description}>
-                    Hora do jogo, insira seu email e senha ou cadastre
+                    Hora do jogo, insira seu email e senha ou cadastre!
                 </Text>
             </View>
             <View style={styles.form}>
                 <Input label="Email" placeholder="Digite seu email" />
-                <Input placeholder="Senha" secureTextEntry={true} />
+                <Input label="Senha" placeholder="Senha" secureTextEntry={true} />
             </View>
             <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
             <View
@@ -127,7 +127,7 @@ const Login = () => {
                 <Link
                     href="/(public)/register"
                     style={{
-                        ...styles.forgotPassword
+                        ...styles.register
                     }}
                 >
                     Cadastre-se!
@@ -168,6 +168,12 @@ const createStyles = (theme: PalleteProps) =>
             gap: Tokens.spacing[16]
         },
         forgotPassword: {
+            color: theme.text,
+            fontSize: Tokens.fontSize[16],
+            fontWeight: "400",
+            alignSelf: "center"
+        },
+        register: {
             color: theme.text,
             fontSize: Tokens.fontSize[16],
             fontWeight: "400",

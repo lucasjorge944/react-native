@@ -1,4 +1,9 @@
-import { Text, TouchableOpacity, TouchableOpacityProps } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    TouchableOpacityProps
+} from "react-native";
 import React from "react";
 import { PalleteProps } from "@/constants/Pallete";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
@@ -39,7 +44,7 @@ const Button = (props: Props) => {
 };
 
 const createStyles = (theme: PalleteProps, props: Props) => {
-    return {
+    return StyleSheet.create({
         container: {
             backgroundColor: props.backgroundColor || theme.button.primary.bg,
             padding: Tokens.spacing[16],
@@ -50,7 +55,7 @@ const createStyles = (theme: PalleteProps, props: Props) => {
             color: theme.button.primary.text,
             fontSize: Tokens.fontSize[14]
         }
-    };
+    });
 };
 
 export default Button;

@@ -14,8 +14,12 @@ import Input from "../shared/components/Input";
 import Button from "../shared/components/Button";
 import { useAuth } from "../context/AuthContext";
 import * as Haptics from "expo-haptics";
+import ButtonIcon from "../shared/components/ButtonIcon";
+import { useRouter } from "expo-router";
+import { AntDesign } from "@expo/vector-icons";
 
 const Register = () => {
+    const router = useRouter();
     const hookTheme = useTheme() as ThemeProps;
     const theme = hookTheme.theme as PalleteProps;
     const styles = createStyles(theme);
@@ -48,13 +52,29 @@ const Register = () => {
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
+            <View
+                style={{
+                    position: "absolute",
+                    top: 64,
+                    left: Tokens.spacing[16]
+                }}
+            >
+                <ButtonIcon
+                    onPress={() => {
+                        router.back();
+                    }}
+                >
+                    <AntDesign name="arrowleft" size={24} />
+                </ButtonIcon>
+            </View>
+
             <Image
                 source={require("@/assets/images/ftv-logo.webp")}
                 style={styles.logo}
             />
             <View style={{ gap: Tokens.spacing[8] }}>
                 <Text style={styles.description}>
-                    Cadastre-se e vire membro
+                    Cadastre-se e comece a jogar!
                 </Text>
             </View>
             <View style={styles.form}>
@@ -94,7 +114,8 @@ const createStyles = (theme: PalleteProps) =>
             flexDirection: "column",
             justifyContent: "center",
             gap: Tokens.spacing[18],
-            paddingHorizontal: Tokens.spacing[16]
+            paddingHorizontal: Tokens.spacing[16],
+            position: "relative"
         },
         description: {
             color: theme.textSecondary,

@@ -9,9 +9,12 @@ import React from "react";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
+import { AntDesign } from "@expo/vector-icons";
 
 type CustomProps = {
     label?: string;
+    refInput?: any;
+    iconLeft?: any;
 };
 
 type Props = CustomProps & TextInputProps;
@@ -19,20 +22,30 @@ type Props = CustomProps & TextInputProps;
 const Input = (props: Props) => {
     const hookTheme = useTheme() as ThemeProps;
     const theme = hookTheme.theme as PalleteProps;
-    const styles = createStyles(theme);
+    const styles = createStyles(theme, props);
     return (
         <View style={styles.container}>
             {props.label && <Text style={styles.label}>{props.label}</Text>}
-            <TextInput
-                placeholderTextColor={theme.input.placeholder}
-                style={styles.input}
-                {...props}
-            />
+            <View style={{ position: "relative" }}>
+                {props.iconLeft && (
+                    <AntDesign
+                        name={props.iconLeft}
+                        size={20}
+                        style={styles.iconLeft}
+                    />
+                )}
+                <TextInput
+                    placeholderTextColor={theme.input.placeholder}
+                    style={styles.input}
+                    ref={props.refInput}
+                    {...props}
+                />
+            </View>
         </View>
     );
 };
 
-const createStyles = (theme: PalleteProps) => {
+const createStyles = (theme: PalleteProps, props: Props) => {
     return StyleSheet.create({
         container: {
             flexDirection: "column",
@@ -47,20 +60,21 @@ const createStyles = (theme: PalleteProps) => {
         input: {
             backgroundColor: theme.input.bg,
             color: theme.input.text,
-            paddingHorizontal: Tokens.spacing[18],
+            paddingLeft: props.iconLeft ? 40 : 18,
             paddingVertical: Tokens.spacing[8],
             borderRadius: Tokens.borderRadius[8],
             height: 52,
             fontSize: Tokens.fontSize[14],
             fontWeight: "500",
             shadowColor: theme.input.shadow,
-            shadowOffset: {
-                width: 0,
-                height: 3
-            },
-            shadowOpacity: 0.1,
-            shadowRadius: 2,
-            elevation: 5
+            ...Tokens.shadow
+        },
+        iconLeft: {
+            position: "absolute",
+            left: 12,
+            top: 16,
+            color: theme.input.placeholder,
+            zIndex: 1
         }
     });
 };

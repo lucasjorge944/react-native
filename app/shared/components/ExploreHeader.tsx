@@ -4,20 +4,25 @@ import {
     SafeAreaView,
     StyleSheet,
     TextInput,
-    TouchableOpacity,
     Animated,
     Dimensions,
     ScrollView
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
-import Colors from "@/constants/Colors";
-import { AntDesign, FontAwesome6, Ionicons } from "@expo/vector-icons";
+import {
+    AntDesign,
+    FontAwesome5,
+    MaterialCommunityIcons,
+    MaterialIcons
+} from "@expo/vector-icons";
 import Chip from "./Chip";
 import { Link } from "expo-router";
 import * as Haptics from "expo-haptics";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
-import { NotificationFeedbackType } from "expo-haptics";
+import Input from "./Input";
+import ButtonIcon from "./ButtonIcon";
+import Tokens from "@/constants/Tokens";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -25,7 +30,7 @@ interface Props {
     onChipChanged: (chip: ChipType) => void;
 }
 
-const ExploreHeader = ({ onChipChanged }: Props) => {
+const ExploreHeader = (props: Props) => {
     const hookTheme = useTheme() as ThemeProps;
     const theme = hookTheme.theme as PalleteProps;
     const scrollRef = useRef<ScrollView>(null);
@@ -45,12 +50,12 @@ const ExploreHeader = ({ onChipChanged }: Props) => {
             {
                 _id: "2",
                 initialText: "Atividades",
-                icon: true
+                icon: false
             },
             {
                 _id: "3",
                 initialText: "Aulas",
-                icon: false
+                icon: true
             },
             {
                 _id: "4",
@@ -73,14 +78,14 @@ const ExploreHeader = ({ onChipChanged }: Props) => {
     const expandWidth = () => {
         Animated.timing(widthAnim, {
             toValue: screenWidth * 1 - 24,
-            duration: 150,
+            duration: Tokens.animations.duration[200],
             useNativeDriver: false
         }).start();
     };
     const shrinkWidth = () => {
         Animated.timing(widthAnim, {
-            toValue: screenWidth * 0.8 - 6,
-            duration: 150,
+            toValue: screenWidth * 0.84 - 6,
+            duration: Tokens.animations.duration[200],
             useNativeDriver: false
         }).start();
     };
@@ -98,6 +103,7 @@ const ExploreHeader = ({ onChipChanged }: Props) => {
         setSearchTerm("");
     };
     const onReturn = () => {
+        expandWidth();
         setTimeout(() => {
             setIsFocused(false);
         }, 500);
@@ -109,61 +115,88 @@ const ExploreHeader = ({ onChipChanged }: Props) => {
         setChipIndex(index);
         Haptics.selectionAsync();
         console.log("bef", chips[chipIndex]);
-        onChipChanged(chips[index]);
+        props.onChipChanged(chips[index]);
     };
+    const styles = createStyles(theme, props);
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
             <View
                 style={{
                     ...styles.container,
-                    backgroundColor: "white"
+                    backgroundColor: theme.background
                 }}
             >
                 <View
-                    style={{ ...styles.actionRow, justifyContent: "flex-end" }}
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                        paddingHorizontal: Tokens.spacing[12],
+                        width: "100%"
+                    }}
+                >
+                    <Link
+                        href={"/(modals)/location"}
+                        style={{ marginTop: Tokens.spacing[8] }}
+                    >
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                alignItems: "center",
+                                gap: Tokens.spacing[8]
+                            }}
+                        >
+                            <MaterialIcons
+                                name="my-location"
+                                size={20}
+                                color={theme.text}
+                            />
+                            <Text
+                                style={{
+                                    fontSize: Tokens.fontSize[12],
+                                    color: theme.text
+                                }}
+                            >
+                                Rua Papoula Vermelha,120
+                            </Text>
+                        </View>
+                    </Link>
+                    <View style={{ flex: 1 }}></View>
+                    <ButtonIcon>
+                        <MaterialCommunityIcons
+                            name="bell-badge"
+                            size={Tokens.fontSize[20]}
+                        />
+                    </ButtonIcon>
+                    <ButtonIcon>
+                        <FontAwesome5 name="cog" size={Tokens.fontSize[20]} />
+                    </ButtonIcon>
+                </View>
+                <View
+                    style={{
+                        ...styles.actionRow,
+                        justifyContent: "flex-end",
+                        alignItems: "center"
+                    }}
                 >
                     {isFocused && (
-                        <TouchableOpacity
-                            style={styles.buttonReturn}
-                            onPress={onReturn}
-                        >
+                        <ButtonIcon>
                             <AntDesign
                                 name="arrowleft"
-                                size={25}
-                                color={Colors.light.gray[400]}
+                                size={Tokens.fontSize[30]}
+                                onPress={onReturn}
                             />
-                        </TouchableOpacity>
+                        </ButtonIcon>
                     )}
                     <Animated.View style={{ width: widthAnim }}>
-                        <View>
-                            <AntDesign
-                                style={styles.inputIconLeft}
-                                name="search1"
-                                size={20}
-                                color={Colors.light.gray[400]}
-                            />
-                            <TextInput
-                                style={styles.input}
-                                placeholderTextColor={Colors.light.gray[400]}
-                                placeholder="Quadras, atividades, aulas"
-                                onChangeText={(text: string) =>
-                                    setSearchTerm(text)
-                                }
-                                value={serachTerm}
-                                onFocus={handleFocus}
-                                onBlur={handleBlur}
-                                ref={inputRef}
-                            ></TextInput>
-                            {serachTerm && (
-                                <AntDesign
-                                    style={styles.inputIconRight}
-                                    name="close"
-                                    size={20}
-                                    color={Colors.light.gray[400]}
-                                    onPress={onClearSerachTerm}
-                                />
-                            )}
-                        </View>
+                        <Input
+                            placeholder="Quadras, atividades, aulas"
+                            onChangeText={(text: string) => setSearchTerm(text)}
+                            value={serachTerm}
+                            onFocus={handleFocus}
+                            onBlur={handleBlur}
+                            iconLeft="search1"
+                            refInput={inputRef}
+                        ></Input>
                     </Animated.View>
                 </View>
                 <ScrollView
@@ -171,9 +204,9 @@ const ExploreHeader = ({ onChipChanged }: Props) => {
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{
-                        gap: 10,
-                        paddingHorizontal: 12,
-                        paddingTop: 6
+                        gap: Tokens.spacing[12],
+                        paddingHorizontal: Tokens.spacing[12],
+                        paddingTop: Tokens.spacing[8]
                     }}
                 >
                     {chips.map((chip: ChipType, index: number) => (
@@ -186,93 +219,25 @@ const ExploreHeader = ({ onChipChanged }: Props) => {
                         />
                     ))}
                 </ScrollView>
-
-                <View style={styles.myLocationContainer}>
-                    <Ionicons
-                        name="location-outline"
-                        style={styles.myLocationIcon}
-                    />
-                    <Link
-                        href={"/(modals)/location"}
-                        style={styles.myLocationText}
-                    >
-                        Minha Localização
-                    </Link>
-                    <FontAwesome6 name="chevron-down" size={10} />
-                </View>
             </View>
         </SafeAreaView>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        height: 150
-    },
-    actionRow: {
-        flexDirection: "row",
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        gap: 12,
-        width: "100%"
-    },
-    buttonReturn: {
-        width: 50,
-        height: 50,
-        backgroundColor: Colors.light.white[600],
-        borderRadius: 25,
-        alignItems: "center",
-        justifyContent: "center",
-        position: "absolute",
-        left: 12,
-        top: 8
-    },
-    input: {
-        height: 50,
-        backgroundColor: Colors.light.white[500],
-        color: Colors.light.gray[400],
-        borderRadius: 25,
-        paddingHorizontal: 50,
-        fontSize: 16,
-        borderColor: Colors.light.gray[300],
-        borderWidth: 1
-    },
-    inputIconLeft: {
-        position: "absolute",
-        top: 15,
-        left: 20,
-        zIndex: 1
-    },
-    inputIconRight: {
-        position: "absolute",
-        top: 15,
-        right: 20,
-        zIndex: 1,
-        width: 20,
-        height: 40
-    },
-    myLocationContainer: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: 8,
-        width: "100%",
-        height: 34,
-        borderTopColor: Colors.light.white[700],
-        borderTopWidth: 1,
-        borderBottomColor: Colors.light.white[700],
-        backgroundColor: Colors.light.white[500],
-        borderBottomWidth: 1
-    },
-    myLocationText: {
-        color: Colors.light.gray[600],
-        fontSize: 14
-    },
-    myLocationIcon: {
-        color: Colors.light.gray[600],
-        fontSize: 14
-    }
-});
+const createStyles = (theme: PalleteProps, props: Props) => {
+    return StyleSheet.create({
+        container: {
+            height: Tokens.headerHeigth
+        },
+        actionRow: {
+            flexDirection: "row",
+            paddingVertical: Tokens.spacing[12],
+            paddingHorizontal: Tokens.spacing[12],
+            gap: Tokens.spacing[12],
+            width: "100%"
+        }
+    });
+};
 
 export type ChipType = {
     _id: string;

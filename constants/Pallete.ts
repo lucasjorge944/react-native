@@ -73,17 +73,22 @@ const lavender = {
 
 export const lightTheme = {
     background: lavender[400],
+    card: {
+        bg: white,
+        shadow: ceruleam[100]
+    },
     tabBar: {
         bg: white,
         text: ceruleam[600],
         active: orange[500]
     },
-    text: ceruleam[400],
-    textSecondary: gray[500],
+    text: ceruleam[700],
+    textSecondary: gray[100],
+    textInfo: gray[600],
     input: {
         bg: white,
-        text: gray[500],
-        placeholder: gray[100],
+        text: gray[200],
+        placeholder: lavender[600],
         border: gray[400],
         borderFocused: gray[500],
         shadow: ceruleam[100]
@@ -100,23 +105,45 @@ export const lightTheme = {
             shadow: lavender[200]
         }
     },
+    buttonIcon: {
+        bg: "transparent",
+        color: ceruleam[400]
+    },
+    chips: {
+        text: ceruleam[200],
+        border: ceruleam[200],
+        filled: {
+            bg: ceruleam[200],
+            text: white
+        },
+        shadow: ceruleam[100]
+    },
+    border: {
+        thin: lavender[500]
+    },
+    starsRating: orange[500],
     google: "#EB4336",
     facebook: "#0866FF"
 };
 
 export const darkTheme = {
     background: lavender[400],
+    card: {
+        bg: white,
+        shadow: ceruleam[100]
+    },
     tabBar: {
         bg: white,
         text: ceruleam[600],
         active: orange[500]
     },
-    text: ceruleam[600],
-    textSecondary: gray[500],
+    text: ceruleam[700],
+    textSecondary: gray[100],
+    textInfo: gray[600],
     input: {
         bg: white,
-        text: gray[500],
-        placeholder: gray[500],
+        text: gray[200],
+        placeholder: lavender[600],
         border: gray[400],
         borderFocused: gray[500],
         shadow: ceruleam[100]
@@ -133,6 +160,23 @@ export const darkTheme = {
             shadow: lavender[200]
         }
     },
+    buttonIcon: {
+        bg: "transparent",
+        color: ceruleam[400]
+    },
+    chips: {
+        text: ceruleam[200],
+        border: ceruleam[200],
+        filled: {
+            bg: ceruleam[200],
+            text: white
+        },
+        shadow: ceruleam[100]
+    },
+    border: {
+        thin: lavender[500]
+    },
+    starsRating: orange[500],
     google: "#EB4336",
     facebook: "#0866FF"
 };

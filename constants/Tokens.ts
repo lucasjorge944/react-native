@@ -48,5 +48,25 @@ export default {
         50: 0.5,
         75: 0.75,
         100: 1
-    }
+    },
+    animations: {
+        duration: {
+            100: 100,
+            200: 200,
+            300: 300,
+            400: 400,
+            500: 500,
+            600: 600,
+            700: 700,
+            800: 800,
+            900: 900
+        }
+    },
+    shadow: {
+        shadowOffset: { width: 1, height: 3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 5
+    },
+    headerHeigth: 170
 };
