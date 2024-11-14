@@ -73,6 +73,7 @@ const lavender = {
 
 export const lightTheme = {
     background: lavender[400],
+    backgroundSecondary: lavender[200],
     card: {
         bg: white,
         shadow: ceruleam[100]
@@ -119,7 +120,8 @@ export const lightTheme = {
         shadow: ceruleam[100]
     },
     border: {
-        thin: lavender[500]
+        thin: lavender[500],
+        medium: "red"
     },
     starsRating: orange[500],
     google: "#EB4336",
@@ -174,7 +176,8 @@ export const darkTheme = {
         shadow: ceruleam[100]
     },
     border: {
-        thin: lavender[500]
+        thin: lavender[500],
+        medium: "red"
     },
     starsRating: orange[500],
     google: "#EB4336",

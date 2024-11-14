@@ -6,7 +6,8 @@ import {
     TextInput,
     Animated,
     Dimensions,
-    ScrollView
+    ScrollView,
+    Platform
 } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import {
@@ -135,7 +136,7 @@ const ExploreHeader = (props: Props) => {
                     }}
                 >
                     <Link
-                        href={"/(modals)/location"}
+                        href={"/(auth)/(modals)/location"}
                         style={{ marginTop: Tokens.spacing[8] }}
                     >
                         <View
@@ -227,7 +228,11 @@ const ExploreHeader = (props: Props) => {
 const createStyles = (theme: PalleteProps, props: Props) => {
     return StyleSheet.create({
         container: {
-            height: Tokens.headerHeigth
+            height: Tokens.headerHeigth,
+            paddingTop: Platform.select({
+                ios: 0,
+                android: 32
+            })
         },
         actionRow: {
             flexDirection: "row",

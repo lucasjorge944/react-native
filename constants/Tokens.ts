@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 export default {
     spacing: {
         2: 2,
@@ -23,7 +25,7 @@ export default {
         100: "100",
         200: "200",
         300: "300",
-        400: "400",
+        "400": "400",
         500: "500",
         600: "600",
         700: "700",
@@ -68,5 +70,12 @@ export default {
         shadowRadius: 2,
         elevation: 5
     },
-    headerHeigth: 170
+    headerHeigth: Platform.select({
+        ios: 170,
+        android: 200
+    }),
+    headerMySpacesHeight: Platform.select({
+        ios: 50,
+        android: 85
+    })
 };

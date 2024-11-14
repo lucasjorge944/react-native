@@ -1,11 +1,12 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import { Stack } from "expo-router";
-import Colors from "@/constants/Colors";
-import { AntDesign } from "@expo/vector-icons";
 import ModalHeader from "../shared/components/ModalHeader";
+import { ThemeProps, useTheme } from "../context/ThemeContext";
+import { PalleteProps } from "@/constants/Pallete";
 
 const Layout = () => {
+    const hookTheme = useTheme() as ThemeProps;
+    const theme = hookTheme.theme as PalleteProps;
     return (
         <Stack>
             <Stack.Screen name="index" options={{ headerShown: false }} />

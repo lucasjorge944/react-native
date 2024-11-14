@@ -34,7 +34,10 @@ const Button = (props: Props) => {
                 shadowOpacity: 0.4,
                 shadowRadius: 2,
                 elevation: 5,
-                gap: Tokens.spacing[8]
+                gap: Tokens.spacing[8],
+                height: 52,
+                minHeight: 52,
+                maxHeight: 52
             }}
         >
             {props.children}

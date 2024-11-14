@@ -3,6 +3,7 @@ import "react-native-reanimated";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Slot, SplashScreen, useRouter, useSegments } from "expo-router";
 import { ThemeProvider } from "./context/ThemeContext";
+import { StatusBar } from "expo-status-bar";
 
 const InitialLayout = () => {
     SplashScreen.preventAutoHideAsync();
@@ -25,6 +26,7 @@ const InitialLayout = () => {
 const RootLayoutNav = () => {
     return (
         <ThemeProvider>
+            <StatusBar style="dark"></StatusBar>
             <AuthProvider>
                 <InitialLayout />
             </AuthProvider>

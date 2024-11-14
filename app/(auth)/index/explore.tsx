@@ -26,7 +26,6 @@ const Explore = () => {
             style={{ ...styles.container, backgroundColor: theme.background }}
             showsVerticalScrollIndicator={false}
         >
-            <StatusBar style="dark"></StatusBar>
             <Stack.Screen
                 options={{
                     header: () => (

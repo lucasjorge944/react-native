@@ -26,9 +26,6 @@ const Layout = () => {
                 redirect={!authState?.authenticated}
                 options={{
                     tabBarLabel: "Meus Espaços",
-                    headerRight: () => (
-                        <Button onPress={onLogout} title="Logout" />
-                    ),
                     tabBarIcon: ({ color, size }) => (
                         <MaterialIcons
                             name="person-pin-circle"
@@ -49,9 +46,6 @@ const Layout = () => {
                             size={22}
                             color={color}
                         />
-                    ),
-                    headerRight: () => (
-                        <Button onPress={onLogout} title="Logout" />
                     )
                 }}
             />
