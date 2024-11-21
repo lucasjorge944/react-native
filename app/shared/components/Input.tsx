@@ -52,22 +52,20 @@ const createStyles = (theme: PalleteProps, props: Props) => {
             gap: Tokens.spacing[8]
         },
         label: {
-            color: theme.textSecondary,
+            color: theme.textInfo,
             fontSize: Tokens.fontSize[14],
-            fontWeight: "500",
+            fontWeight: "400",
             marginLeft: Tokens.spacing[8]
         },
         input: {
-            backgroundColor: theme.input.bg,
+            backgroundColor: "white",
             color: theme.input.text,
             paddingLeft: props.iconLeft ? 40 : 18,
             paddingVertical: Tokens.spacing[8],
             borderRadius: Tokens.borderRadius[8],
             height: 52,
             fontSize: Tokens.fontSize[14],
-            fontWeight: "500",
-            shadowColor: theme.input.shadow,
-            ...Tokens.shadow
+            fontWeight: "500"
         },
         iconLeft: {
             position: "absolute",

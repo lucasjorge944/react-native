@@ -41,7 +41,10 @@ const ListMyReservations = () => {
                     Minhas Reservas (Hoje)
                 </Text>
                 <ButtonIcon>
-                    <FontAwesome name="filter" size={Tokens.fontSize[20]} />
+                    <FontAwesome
+                        name="filter"
+                        size={Tokens.buttonIcon.fontSize}
+                    />
                 </ButtonIcon>
             </View>
             <View

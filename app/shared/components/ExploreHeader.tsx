@@ -165,11 +165,14 @@ const ExploreHeader = (props: Props) => {
                     <ButtonIcon>
                         <MaterialCommunityIcons
                             name="bell-badge"
-                            size={Tokens.fontSize[20]}
+                            size={Tokens.buttonIcon.fontSize}
                         />
                     </ButtonIcon>
                     <ButtonIcon>
-                        <FontAwesome5 name="cog" size={Tokens.fontSize[20]} />
+                        <FontAwesome5
+                            name="cog"
+                            size={Tokens.buttonIcon.fontSize}
+                        />
                     </ButtonIcon>
                 </View>
                 <View

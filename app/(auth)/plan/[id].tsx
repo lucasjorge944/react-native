@@ -43,7 +43,7 @@ const createStyles = (theme: PalleteProps) => {
             flex: 1,
             paddingTop: Platform.select({
                 ios: 100,
-                android: 90
+                android: 110
             }),
             gap: Tokens.spacing[16],
             paddingHorizontal: Tokens.spacing[16]

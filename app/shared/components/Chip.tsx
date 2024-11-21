@@ -64,7 +64,6 @@ const createStyles = (theme: PalleteProps, props: Props) => {
         },
         containerFilled: { backgroundColor: theme.chips.filled.bg },
         containerBorderd: {
-            backgroundColor: "transparent",
             borderWidth: 1,
             borderColor: theme.chips.border
         },

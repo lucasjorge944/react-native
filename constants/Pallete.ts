@@ -1,5 +1,5 @@
 const black = "#000000";
-const white = "#FFFFFF";
+const white = "#F4F5F6";
 
 const ceruleam = {
     100: "#3F8DA7",
@@ -38,6 +38,8 @@ const orange = {
     }
 };
 const gray = {
+    25: "#f0f0f0",
+    50: "#C2C2C2",
     100: "#868683",
     200: "#7A7A77",
     300: "#6D6D69",
@@ -72,7 +74,7 @@ const lavender = {
 };
 
 export const lightTheme = {
-    background: lavender[400],
+    background: white,
     backgroundSecondary: lavender[200],
     card: {
         bg: white,
@@ -86,10 +88,11 @@ export const lightTheme = {
     text: ceruleam[700],
     textSecondary: gray[100],
     textInfo: gray[600],
+    textAccent: orange[500],
     input: {
-        bg: white,
-        text: gray[200],
-        placeholder: lavender[600],
+        background: gray[25],
+        text: gray[500],
+        placeholder: gray[50],
         border: gray[400],
         borderFocused: gray[500],
         shadow: ceruleam[100]
@@ -110,6 +113,10 @@ export const lightTheme = {
         bg: "transparent",
         color: ceruleam[400]
     },
+    buttonIconFilled: {
+        bg: white,
+        color: ceruleam[500]
+    },
     chips: {
         text: ceruleam[200],
         border: ceruleam[200],
@@ -120,16 +127,19 @@ export const lightTheme = {
         shadow: ceruleam[100]
     },
     border: {
-        thin: lavender[500],
+        thin: gray[25],
         medium: "red"
     },
     starsRating: orange[500],
     google: "#EB4336",
-    facebook: "#0866FF"
+    facebook: "#0866FF",
+    extLink: "#3498db",
+    green: "green"
 };
 
 export const darkTheme = {
-    background: lavender[400],
+    background: white,
+    backgroundSecondary: lavender[200],
     card: {
         bg: white,
         shadow: ceruleam[100]
@@ -142,10 +152,11 @@ export const darkTheme = {
     text: ceruleam[700],
     textSecondary: gray[100],
     textInfo: gray[600],
+    textAccent: orange[500],
     input: {
-        bg: white,
-        text: gray[200],
-        placeholder: lavender[600],
+        background: gray[25],
+        text: gray[500],
+        placeholder: gray[50],
         border: gray[400],
         borderFocused: gray[500],
         shadow: ceruleam[100]
@@ -166,6 +177,10 @@ export const darkTheme = {
         bg: "transparent",
         color: ceruleam[400]
     },
+    buttonIconFilled: {
+        bg: white,
+        color: ceruleam[500]
+    },
     chips: {
         text: ceruleam[200],
         border: ceruleam[200],
@@ -181,7 +196,9 @@ export const darkTheme = {
     },
     starsRating: orange[500],
     google: "#EB4336",
-    facebook: "#0866FF"
+    facebook: "#0866FF",
+    extLink: "#3498db",
+    green: "green"
 };
 
 export type PalleteProps = typeof lightTheme;

@@ -123,9 +123,7 @@ const createStyles = (theme: PalleteProps) =>
             backgroundColor: theme.card.bg,
             borderRadius: Tokens.borderRadius[8],
             padding: Tokens.spacing[8],
-            width: screenWidth - 32,
-            shadowColor: theme.card.shadow,
-            ...Tokens.shadow
+            width: screenWidth - 32
         },
         logoWrapper: {
             width: 60,

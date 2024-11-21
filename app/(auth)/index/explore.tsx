@@ -5,7 +5,6 @@ import ExploreHeader, { ChipType } from "../../shared/components/ExploreHeader";
 import ListNearBy from "../../shared/components/ListNearBy";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
-import { StatusBar } from "expo-status-bar";
 import Tokens from "@/constants/Tokens";
 import ListTopRatings from "@/app/shared/components/ListTopRatings";
 

@@ -27,11 +27,14 @@ const MySpacesHeader = () => {
                     <ButtonIcon>
                         <MaterialCommunityIcons
                             name="bell-badge"
-                            size={Tokens.fontSize[20]}
+                            size={Tokens.buttonIcon.fontSize}
                         />
                     </ButtonIcon>
                     <ButtonIcon>
-                        <FontAwesome5 name="cog" size={Tokens.fontSize[20]} />
+                        <FontAwesome5
+                            name="cog"
+                            size={Tokens.buttonIcon.fontSize}
+                        />
                     </ButtonIcon>
                 </View>
             </View>
@@ -47,7 +50,7 @@ const createStyles = (theme: PalleteProps) => {
             paddingHorizontal: Tokens.spacing[12],
             paddingTop: Platform.select({
                 ios: 0,
-                android: 32
+                android: 40
             })
         }
     });

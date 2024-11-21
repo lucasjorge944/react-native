@@ -4,7 +4,6 @@ import {
     StyleSheet,
     Image,
     TextInput,
-    TouchableOpacity,
     KeyboardAvoidingView,
     Platform
 } from "react-native";
@@ -40,11 +39,11 @@ const Login = () => {
     };
 
     const onAuthGoogle = () => {
-        router.push("/(modals)/google");
+        router.push("/google");
     };
 
     const onAuthFacebook = () => {
-        router.push("/(modals)/facebook");
+        router.push("/facebook");
     };
 
     const ref_input2 = useRef<TextInput | null>(null);
@@ -67,7 +66,11 @@ const Login = () => {
             </View>
             <View style={styles.form}>
                 <Input label="Email" placeholder="Digite seu email" />
-                <Input label="Senha" placeholder="Senha" secureTextEntry={true} />
+                <Input
+                    label="Senha"
+                    placeholder="Senha"
+                    secureTextEntry={true}
+                />
             </View>
             <Text style={styles.forgotPassword}>Esqueceu sua senha?</Text>
             <View
@@ -118,8 +121,7 @@ const Login = () => {
             >
                 <Text
                     style={{
-                        ...styles.forgotPassword,
-                        color: theme.textSecondary
+                        ...styles.forgotPassword
                     }}
                 >
                     Ainda não é membro?
@@ -159,7 +161,7 @@ const createStyles = (theme: PalleteProps) =>
             alignSelf: "center"
         },
         description: {
-            color: theme.textSecondary,
+            color: theme.textInfo,
             fontSize: Tokens.fontSize[14],
             fontWeight: "400",
             alignSelf: "center"
@@ -168,14 +170,14 @@ const createStyles = (theme: PalleteProps) =>
             gap: Tokens.spacing[16]
         },
         forgotPassword: {
-            color: theme.text,
-            fontSize: Tokens.fontSize[16],
+            color: theme.textInfo,
+            fontSize: Tokens.fontSize[14],
             fontWeight: "400",
             alignSelf: "center"
         },
         register: {
             color: theme.text,
-            fontSize: Tokens.fontSize[16],
+            fontSize: Tokens.fontSize[14],
             fontWeight: "400",
             alignSelf: "center"
         }

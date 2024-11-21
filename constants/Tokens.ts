@@ -77,5 +77,8 @@ export default {
     headerMySpacesHeight: Platform.select({
         ios: 50,
         android: 85
-    })
+    }),
+    buttonIcon: {
+        fontSize: 18
+    }
 };

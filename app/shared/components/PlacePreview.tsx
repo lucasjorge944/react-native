@@ -6,6 +6,7 @@ import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
 import StarsRating from "./StarsRating";
+import Logo from "./Logo";
 
 const { width: screenWidth } = Dimensions.get("window");
 
@@ -25,14 +26,7 @@ const PlacePreview = (props: Props) => {
     const styles = createStyles(theme);
     return (
         <View style={[styles.container, card && styles.card]}>
-            <View style={styles.logoWrapper}>
-                <Image
-                    source={{
-                        uri: logo
-                    }}
-                    style={styles.logo}
-                ></Image>
-            </View>
+            <Logo logo={logo} />
             <View
                 style={{
                     gap: Tokens.spacing[4]
@@ -74,25 +68,7 @@ const createStyles = (theme: PalleteProps) =>
             backgroundColor: theme.card.bg,
             borderRadius: Tokens.borderRadius[8],
             padding: Tokens.spacing[8],
-            width: screenWidth - 32,
-            shadowColor: theme.card.shadow,
-            ...Tokens.shadow
-        },
-        logoWrapper: {
-            width: 60,
-            height: 60,
-            borderRadius: Tokens.borderRadius[8],
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "hidden",
-            borderWidth: Tokens.borderWidth[1],
-            borderColor: theme.border.thin
-        },
-        logo: {
-            width: 60,
-            height: 60,
-            backgroundColor: "rgba(0,0,0,0.1)"
+            width: screenWidth - 32
         },
         name: {
             color: theme.text,

@@ -74,7 +74,7 @@ const Register = () => {
             />
             <View style={{ gap: Tokens.spacing[8] }}>
                 <Text style={styles.description}>
-                    Cadastre-se e comece a jogar!
+                    Cadastre-se e ache as melhores quadras perto de você!
                 </Text>
             </View>
             <View style={styles.form}>
@@ -118,7 +118,7 @@ const createStyles = (theme: PalleteProps) =>
             position: "relative"
         },
         description: {
-            color: theme.textSecondary,
+            color: theme.textInfo,
             fontSize: Tokens.fontSize[14],
             fontWeight: "400",
             alignSelf: "center"
