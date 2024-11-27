@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import React from "react";
-import ListItem from "@/app/components/ListItem/ListItem";
+import ListItem from "@/app/components/ListItem";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 

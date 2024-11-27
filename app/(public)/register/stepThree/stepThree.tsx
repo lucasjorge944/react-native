@@ -15,9 +15,9 @@ import { useAuth } from "../../../context/AuthContext";
 import { useFormContext } from "react-hook-form";
 import { FontAwesome6 } from "@expo/vector-icons";
 import Input from "../../../components/Input";
-import Button from "../../../components/Button";
 import Progress from "../components/Progress";
 import styles from "./styles";
+import Button from "@/app/components/Button";
 
 const StepThree = () => {
     const hookTheme = useTheme() as ThemeProps;

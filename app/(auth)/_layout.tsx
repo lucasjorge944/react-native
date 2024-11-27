@@ -4,8 +4,8 @@ import ModalHeader from "../components/ModalHeader";
 
 const Layout = () => {
     return (
-        <Stack initialRouteName="index">
-            <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack initialRouteName="(tabs)">
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
             <Stack.Screen
                 name="(modals)/location"
                 options={{

@@ -12,7 +12,7 @@ const InitialLayout = () => {
     useEffect(() => {
         const inTabsGroup = segments[0] === "(auth)";
         if (authState?.authenticated && !inTabsGroup) {
-            router.replace("/(auth)");
+            router.replace("/(auth)/(tabs)/myspaces");
         } else if (!authState?.authenticated) {
             router.replace("/login");
         }

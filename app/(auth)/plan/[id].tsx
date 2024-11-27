@@ -5,10 +5,10 @@ import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import Plans from "@/app/mocks/Plans";
 import Tokens from "@/constants/Tokens";
-import Button from "@/app/components/Button";
 import Chip from "@/app/components/Chip";
+import Button from "@/app/components/Button";
 
-const Page = () => {
+const PlanPage = () => {
     const { id } = useLocalSearchParams<{ id: string }>();
     const plan = Plans.find((plan) => plan._id === id);
     const hookTheme = useTheme() as ThemeProps;
@@ -71,4 +71,4 @@ const createStyles = (theme: PalleteProps) => {
     });
 };
 
-export default Page;
+export default PlanPage;

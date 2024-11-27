@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
-import StarsRating from "@/app/components/StarsRating/StarsRating";
+import StarsRating from "@/app/components/StarsRating";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
 
