@@ -1,13 +1,13 @@
-import { Text, ScrollView, SafeAreaView, Platform, View } from "react-native";
+import { ScrollView, View } from "react-native";
 import React from "react";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
-import ListMyClasses from "@/app/shared/components/ListMyClasses";
+import ListMyClasses from "@/app/components/ListMyClasses";
 import { Stack } from "expo-router";
-import MySpacesHeader from "@/app/shared/components/MySpacesHeader";
-import ListMyReservations from "@/app/shared/components/ListMyReservations";
-import ListMyPlans from "@/app/shared/components/ListMyPlans";
+import MySpacesHeader from "@/app/components/MySpacesHeader";
+import ListMyReservations from "@/app/components/ListMyReservations";
+import ListMyPlans from "@/app/components/ListMyPlans";
 
 const MySpaces = () => {
     const hookTheme = useTheme() as ThemeProps;

@@ -1,17 +1,29 @@
 import React from "react";
-import { Stack, Tabs } from "expo-router";
-import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
-import Colors from "@/constants/Colors";
-import { ThemeProps, useTheme } from "../context/ThemeContext";
+import { router, Stack } from "expo-router";
+import ButtonIcon from "../components/ButtonIcon";
+import { FontAwesome6 } from "@expo/vector-icons";
+import Tokens from "@/constants/Tokens";
 
 const Layout = () => {
-    const { theme } = useTheme() as ThemeProps;
     return (
         <Stack>
-            <Stack.Screen name="login" options={{ headerShown: false }} />
+            <Stack.Screen name="login/index" options={{ headerShown: false }} />
             <Stack.Screen
                 name="register"
-                options={{ headerShown: false }}
+                options={{
+                    headerTitle: "",
+                    headerTransparent: true,
+                    headerLeft: () => {
+                        return (
+                            <ButtonIcon filled={true} onPress={router.back}>
+                                <FontAwesome6
+                                    name="chevron-left"
+                                    size={Tokens.buttonIcon.fontSize}
+                                />
+                            </ButtonIcon>
+                        );
+                    }
+                }}
             ></Stack.Screen>
             <Stack.Screen
                 name="(modals)/google"

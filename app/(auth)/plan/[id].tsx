@@ -3,10 +3,10 @@ import React from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
-import Plans from "@/app/shared/mocks/Plans";
+import Plans from "@/app/mocks/Plans";
 import Tokens from "@/constants/Tokens";
-import Chip from "@/app/shared/components/Chip";
-import Button from "@/app/shared/components/Button";
+import Button from "@/app/components/Button";
+import Chip from "@/app/components/Chip";
 
 const Page = () => {
     const { id } = useLocalSearchParams<{ id: string }>();

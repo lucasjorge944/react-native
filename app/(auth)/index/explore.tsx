@@ -1,20 +1,21 @@
 import { Text, StyleSheet, ScrollView, View } from "react-native";
 import React, { useState } from "react";
 import { Stack } from "expo-router";
-import ExploreHeader, { ChipType } from "../../shared/components/ExploreHeader";
-import ListNearBy from "../../shared/components/ListNearBy";
+import ExploreHeader from "../../components/ExploreHeader";
+import ListNearBy from "../../components/ListNearBy";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
-import ListTopRatings from "@/app/shared/components/ListTopRatings";
+import ListTopRatings from "@/app/components/ListTopRatings";
+import { ChipProps } from "@/app/components/Chip";
 
 const Explore = () => {
-    const [chip, setChip] = useState<ChipType>({
+    const [chip, setChip] = useState<ChipProps>({
         _id: "1",
         icon: false,
         initialText: "Espaços"
     });
-    const onChipChanged = (chip: ChipType) => {
+    const onChipChanged = (chip: ChipProps) => {
         setChip(chip);
     };
     const hookTheme = useTheme() as ThemeProps;

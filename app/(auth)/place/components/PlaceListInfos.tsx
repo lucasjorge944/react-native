@@ -1,12 +1,12 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
-import ListItem from "@/app/shared/components/ListItem";
+import ListItem from "@/app/components/ListItem/ListItem";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 
-interface Props {
+type Props = {
     place: any;
-}
+};
 
 const PlaceListInfos = (props: Props) => {
     const { place } = props;

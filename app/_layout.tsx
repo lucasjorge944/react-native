@@ -4,9 +4,8 @@ import { AuthProvider, useAuth } from "./context/AuthContext";
 import { Slot, SplashScreen, useRouter, useSegments } from "expo-router";
 import { ThemeProvider } from "./context/ThemeContext";
 import { StatusBar } from "expo-status-bar";
-
+SplashScreen.preventAutoHideAsync();
 const InitialLayout = () => {
-    SplashScreen.preventAutoHideAsync();
     const { authState, onLogout } = useAuth();
     const segments = useSegments();
     const router = useRouter();

@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
-import StarsRating from "@/app/shared/components/StarsRating";
+import StarsRating from "@/app/components/StarsRating/StarsRating";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
 
-interface Props {
+type Props = {
     rating: number;
-}
+};
 
 const PlaceRating = (props: Props) => {
     const hookTheme = useTheme() as ThemeProps;

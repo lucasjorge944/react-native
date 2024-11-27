@@ -1,20 +1,17 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
-import StarsRating from "@/app/shared/components/StarsRating";
 import { PalleteProps } from "@/constants/Pallete";
 import Tokens from "@/constants/Tokens";
 import {
     Entypo,
     FontAwesome,
-    FontAwesome5,
     FontAwesome6,
     MaterialCommunityIcons,
-    MaterialIcons,
-    SimpleLineIcons
+    MaterialIcons
 } from "@expo/vector-icons";
 
-interface Props {
+type Props = {
     contacts?: {
         address?: string;
         facebook?: string;
@@ -22,7 +19,7 @@ interface Props {
         phone?: string;
         website?: string;
     };
-}
+};
 
 const PlaceContacts = (props: Props) => {
     const { contacts } = props;

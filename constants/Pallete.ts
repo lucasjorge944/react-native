@@ -1,5 +1,5 @@
 const black = "#000000";
-const white = "#F4F5F6";
+const white = "#FFFFFF";
 
 const ceruleam = {
     100: "#3F8DA7",
@@ -74,7 +74,7 @@ const lavender = {
 };
 
 export const lightTheme = {
-    background: white,
+    background: "#F4F5F6",
     backgroundSecondary: lavender[200],
     card: {
         bg: white,
@@ -90,7 +90,7 @@ export const lightTheme = {
     textInfo: gray[600],
     textAccent: orange[500],
     input: {
-        background: gray[25],
+        background: white,
         text: gray[500],
         placeholder: gray[50],
         border: gray[400],
@@ -130,15 +130,20 @@ export const lightTheme = {
         thin: gray[25],
         medium: "red"
     },
+    progress: {
+        background: lavender[200],
+        bar: ceruleam[200]
+    },
     starsRating: orange[500],
     google: "#EB4336",
     facebook: "#0866FF",
     extLink: "#3498db",
-    green: "green"
+    green: "green",
+    warn: "#DC1637"
 };
 
 export const darkTheme = {
-    background: white,
+    background: "#F4F5F6",
     backgroundSecondary: lavender[200],
     card: {
         bg: white,
@@ -154,7 +159,7 @@ export const darkTheme = {
     textInfo: gray[600],
     textAccent: orange[500],
     input: {
-        background: gray[25],
+        background: white,
         text: gray[500],
         placeholder: gray[50],
         border: gray[400],
@@ -191,14 +196,19 @@ export const darkTheme = {
         shadow: ceruleam[100]
     },
     border: {
-        thin: lavender[500],
+        thin: gray[25],
         medium: "red"
+    },
+    progress: {
+        background: lavender[200],
+        bar: ceruleam[200]
     },
     starsRating: orange[500],
     google: "#EB4336",
     facebook: "#0866FF",
     extLink: "#3498db",
-    green: "green"
+    green: "green",
+    warn: "#DC1637"
 };
 
 export type PalleteProps = typeof lightTheme;

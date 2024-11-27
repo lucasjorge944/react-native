@@ -2,11 +2,11 @@ import { lightTheme, darkTheme, PalleteProps } from "@/constants/Pallete";
 import React, { createContext, useContext, useState } from "react";
 import { ColorSchemeName, useColorScheme } from "react-native";
 
-export interface ThemeProps {
+export type ThemeProps = {
     theme?: PalleteProps;
     colorScheme?: ColorSchemeName;
     toggleTheme: (theme: "light" | "dark") => void;
-}
+};
 
 const ThemeContext = createContext<ThemeProps>({ toggleTheme: () => {} });
 

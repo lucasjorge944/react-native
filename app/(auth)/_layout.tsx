@@ -1,14 +1,10 @@
 import React from "react";
 import { Stack } from "expo-router";
-import ModalHeader from "../shared/components/ModalHeader";
-import { ThemeProps, useTheme } from "../context/ThemeContext";
-import { PalleteProps } from "@/constants/Pallete";
+import ModalHeader from "../components/ModalHeader";
 
 const Layout = () => {
-    const hookTheme = useTheme() as ThemeProps;
-    const theme = hookTheme.theme as PalleteProps;
     return (
-        <Stack>
+        <Stack initialRouteName="index">
             <Stack.Screen name="index" options={{ headerShown: false }} />
             <Stack.Screen
                 name="(modals)/location"

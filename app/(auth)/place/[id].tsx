@@ -1,16 +1,16 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
-import Places from "@/app/shared/mocks/Places";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
-import PlaceHeader from "@/app/shared/components/PlaceHeader";
+import PlaceHeader from "@/app/components/PlaceHeader";
 import Animated from "react-native-reanimated";
 import Tokens from "@/constants/Tokens";
-import Logo from "@/app/shared/components/Logo";
+import Logo from "@/app/components/Logo/Logo";
 import PlaceRating from "./components/PlaceRating";
 import PlaceContacts from "./components/PlaceContacts";
 import PlaceListInfos from "./components/PlaceListInfos";
+import Places from "@/app/mocks/Places";
 
 const Page = () => {
     const { id } = useLocalSearchParams<{ id: string }>();
