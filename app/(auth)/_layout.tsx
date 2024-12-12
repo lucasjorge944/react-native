@@ -11,7 +11,14 @@ const Layout = () => {
                 options={{
                     presentation: "modal",
                     title: "Minha Localização",
-                    header: () => <ModalHeader />
+                    header: () => <ModalHeader title="Minha Localização" />
+                }}
+            ></Stack.Screen>
+            <Stack.Screen
+                name="(modals)/classInfo/[id]"
+                options={{
+                    presentation: "modal",
+                    header: () => <ModalHeader title="Detalhes da Aula" />
                 }}
             ></Stack.Screen>
         </Stack>

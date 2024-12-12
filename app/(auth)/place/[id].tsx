@@ -57,6 +57,57 @@ const Page = () => {
         };
     });
 
+    const navigation = useNavigation();
+
+    const headerAnimatedStyle = useAnimatedStyle(() => {
+        return {
+            opacity: interpolate(
+                scrollOffset.value,
+                [0, IMG_HEIGHT / 2],
+                [0, 1]
+            )
+        };
+    });
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTransparent: true,
+            headerTitle: "",
+            headerBackground: () => (
+                <Animated.View style={[headerAnimatedStyle, styles.header]} />
+            ),
+            headerLeft: () => (
+                <ButtonIcon filled={true} onPress={router.back}>
+                    <FontAwesome6
+                        name="chevron-left"
+                        size={Tokens.buttonIcon.fontSize}
+                    />
+                </ButtonIcon>
+            ),
+            headerRight: () => (
+                <View
+                    style={{
+                        flexDirection: "row",
+                        gap: Tokens.spacing[18]
+                    }}
+                >
+                    <ButtonIcon onPress={onShare} filled={true}>
+                        <FontAwesome6
+                            name="share-from-square"
+                            size={Tokens.buttonIcon.fontSize}
+                        />
+                    </ButtonIcon>
+                    <ButtonIcon filled={true}>
+                        <FontAwesome6
+                            name="heart"
+                            size={Tokens.buttonIcon.fontSize}
+                        />
+                    </ButtonIcon>
+                </View>
+            )
+        });
+    }, []);
+
     const onShare = async () => {
         try {
             await Share.share({
@@ -69,41 +120,6 @@ const Page = () => {
 
     return (
         <View style={{ flex: 1 }}>
-            <Stack.Screen
-                options={{
-                    headerTitle: "",
-                    headerTransparent: true,
-                    headerLeft: () => (
-                        <ButtonIcon filled={true} onPress={router.back}>
-                            <FontAwesome6
-                                name="chevron-left"
-                                size={Tokens.buttonIcon.fontSize}
-                            />
-                        </ButtonIcon>
-                    ),
-                    headerRight: () => (
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                gap: Tokens.spacing[18]
-                            }}
-                        >
-                            <ButtonIcon onPress={onShare} filled={true}>
-                                <FontAwesome6
-                                    name="share-from-square"
-                                    size={Tokens.buttonIcon.fontSize}
-                                />
-                            </ButtonIcon>
-                            <ButtonIcon filled={true}>
-                                <FontAwesome6
-                                    name="heart"
-                                    size={Tokens.buttonIcon.fontSize}
-                                />
-                            </ButtonIcon>
-                        </View>
-                    )
-                }}
-            />
             <Animated.ScrollView style={styles.container} ref={scrollRef}>
                 <Animated.Image
                     source={{
@@ -116,11 +132,15 @@ const Page = () => {
                         <Text style={styles.title}>{place?.name}</Text>
                         <Logo logo={place?.logo || ""} />
                     </View>
-
                     <PlaceRating rating={place?.rating || 0} />
                     <PlaceContacts contacts={place?.contacts} />
                 </View>
-                <View>
+                <View
+                    style={{
+                        paddingBottom: 200,
+                        backgroundColor: theme.background
+                    }}
+                >
                     <PlaceListInfos place={place} />
                 </View>
             </Animated.ScrollView>
@@ -132,6 +152,12 @@ const createStyles = (theme: PalleteProps) => {
     return StyleSheet.create({
         container: {
             flex: 1
+        },
+        header: {
+            height: 100,
+            backgroundColor: theme.background,
+            borderBottomWidth: 1,
+            borderBottomColor: theme.border.thin
         },
         mainImage: {
             width,

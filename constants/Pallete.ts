@@ -38,7 +38,7 @@ const orange = {
     }
 };
 const gray = {
-    25: "#f0f0f0",
+    25: "#D8D8D8",
     50: "#C2C2C2",
     100: "#868683",
     200: "#7A7A77",
@@ -128,7 +128,7 @@ export const lightTheme = {
     },
     border: {
         thin: gray[25],
-        medium: "red"
+        medium: gray[50]
     },
     progress: {
         background: lavender[200],
@@ -197,7 +197,7 @@ export const darkTheme = {
     },
     border: {
         thin: gray[25],
-        medium: "red"
+        medium: gray[200]
     },
     progress: {
         background: lavender[200],
