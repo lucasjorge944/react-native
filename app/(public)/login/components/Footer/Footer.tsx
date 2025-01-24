@@ -12,7 +12,7 @@ const Footer = () => {
     return (
         <View>
             <Image
-                source={require("@/assets/images/ftv-logo.webp")}
+                source={require("@/assets/images/ftv-logo.png")}
                 style={_styles.logo}
             />
             <View style={_styles.notMember}>

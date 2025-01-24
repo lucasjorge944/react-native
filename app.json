@@ -1,40 +1,38 @@
 {
-  "expo": {
-    "name": "tabs-auth",
-    "slug": "tabs-auth",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/ftv-logo.webp",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/images/ftv-logo.webp",
-      "resizeMode": "contain",
-      "backgroundColor": "#E1E8FA"
-    },
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/ftv-logo.webp",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/ftv-logo.webp"
-    },
-    "plugins": [
-      "expo-router",
-      "expo-secure-store",
-      "expo-font"
-    ],
-    "experiments": {
-      "typedRoutes": true,
-      "tsconfigPaths": true
+    "expo": {
+        "name": "tabs-auth",
+        "slug": "tabs-auth",
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/ftv-logo.png",
+        "scheme": "myapp",
+        "userInterfaceStyle": "automatic",
+        "newArchEnabled": true,
+        "splash": {
+            "image": "./assets/images/ftv-logo.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#E1E8FA"
+        },
+        "ios": {
+            "supportsTablet": true,
+            "bundleIdentifier": "com.anonymous.tabsauth"
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/images/ftv-logo.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.anonymous.tabsauth"
+        },
+        "web": {
+            "bundler": "metro",
+            "output": "static",
+            "favicon": "./assets/images/ftv-logo.png"
+        },
+        "plugins": ["expo-router", "expo-secure-store", "expo-font"],
+        "experiments": {
+            "typedRoutes": true,
+            "tsconfigPaths": true
+        }
     }
-  }
 }
