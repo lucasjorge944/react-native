@@ -33,17 +33,17 @@ const Login = () => {
 
     const passwordRef = useRef<TextInput>(null);
 
-    const { onLogin } = useAuth();
+    //const { onLogin } = useAuth();
 
     const login = async (data: FormProps) => {
-        if (!data.email || !data.password) return;
-        const result = await onLogin!(data.email, data.password);
-        if (result && result.error) {
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            alert(result.msg);
-        } else {
-            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
-        }
+        // if (!data.email || !data.password) return;
+        // const result = await onLogin!(data.email, data.password);
+        // if (result && result.error) {
+        //     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+        //     alert(result.msg);
+        // } else {
+        //     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+        // }
     };
 
     const dismissKeyboard = () => {

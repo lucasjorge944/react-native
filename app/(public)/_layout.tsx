@@ -26,6 +26,10 @@ const Layout = () => {
                 }}
             ></Stack.Screen>
             <Stack.Screen
+                name="signup/index"
+                options={{ headerShown: false }}
+            ></Stack.Screen>
+            <Stack.Screen
                 name="(modals)/google"
                 options={{ presentation: "modal", title: "Logar com Google" }}
             ></Stack.Screen>

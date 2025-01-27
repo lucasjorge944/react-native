@@ -17,10 +17,7 @@ const Footer = () => {
             />
             <View style={_styles.notMember}>
                 <Text style={_styles.label}>Ainda não é membro?</Text>
-                <Link
-                    href="/(public)/register/stepOne"
-                    style={_styles.register}
-                >
+                <Link href="/signup" style={_styles.register}>
                     Cadastre-se!
                 </Link>
             </View>

@@ -1,15 +1,20 @@
-import axios from "axios";
-import * as SecureStore from "expo-secure-store";
 import { createContext, useContext, useEffect, useState } from "react";
+import * as SecureStore from "expo-secure-store";
+import {
+    useAuth as useClerkAuth,
+    SignedIn,
+    SignedOut
+} from "@clerk/clerk-expo";
 
 type AuthProps = {
-    authState?: { token: string | null; authenticated: boolean | null };
-    onRegister?: (email: string, password: string) => Promise<any>;
-    onLogin?: (email: string, password: string) => Promise<any>;
-    onLogout?: () => Promise<any>;
+    authState?: {
+        token: string | null;
+        authenticated: boolean | null;
+    };
+    signOut?: () => Promise<void>;
 };
-const TOKEN_KEY = "my-jwt";
-export const API_URL = "https://api.developbetterapps.com";
+
+const TOKEN_KEY = "clerk-jwt";
 const AuthContext = createContext<AuthProps>({});
 
 export const useAuth = () => {
@@ -17,6 +22,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }: any) => {
+    const { isLoaded, isSignedIn, getToken, signOut } = useClerkAuth();
     const [authState, setAuthState] = useState<{
         token: string | null;
         authenticated: boolean | null;
@@ -27,59 +33,35 @@ export const AuthProvider = ({ children }: any) => {
 
     useEffect(() => {
         const loadToken = async () => {
-            const token = await SecureStore.getItemAsync(TOKEN_KEY);
-            if (token) {
-                axios.defaults.headers.common[
-                    "Authorization"
-                ] = `Bearer ${token}`;
-                setAuthState({ token, authenticated: true });
+            if (isLoaded && isSignedIn) {
+                const token = await getToken();
+                if (token) {
+                    await SecureStore.setItemAsync(TOKEN_KEY, token);
+                    setAuthState({
+                        token: token,
+                        authenticated: true
+                    });
+                }
+            } else if (isLoaded && !isSignedIn) {
+                await SecureStore.deleteItemAsync(TOKEN_KEY);
+                setAuthState({
+                    token: null,
+                    authenticated: false
+                });
             }
         };
         loadToken();
-    });
-
-    const register = async (email: string, password: string) => {
-        console.log(email, password);
-        try {
-            return await axios.post(`${API_URL}/users`, {
-                email,
-                password
-            });
-        } catch (e) {
-            return { error: true, msg: (e as any).response.data.msg };
-        }
-    };
-
-    const login = async (email: string, password: string) => {
-        try {
-            const result = await axios.post(`${API_URL}/auth`, {
-                email,
-                password
-            });
-            console.log("Logged! results:", result);
-            setAuthState({ token: result.data.token, authenticated: true });
-            axios.defaults.headers.common[
-                "Authorization"
-            ] = `Bearer ${result.data.token}`;
-            await SecureStore.setItemAsync(TOKEN_KEY, result.data.token);
-            return result;
-        } catch (e) {
-            return { error: true, msg: (e as any).response.data.msg };
-        }
-    };
-
-    const logout = async () => {
-        await SecureStore.deleteItemAsync(TOKEN_KEY);
-        axios.defaults.headers.common["Authorization"] = "";
-        setAuthState({ token: null, authenticated: false });
-    };
+    }, [isLoaded, isSignedIn]);
 
     const value = {
-        onRegister: register,
-        onLogin: login,
-        onLogout: logout,
+        signOut,
         authState
     };
+
+    if (!isLoaded) {
+        return null;
+    }
+
     return (
         <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
     );
