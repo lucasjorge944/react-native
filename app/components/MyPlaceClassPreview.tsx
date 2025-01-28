@@ -73,7 +73,7 @@ const MyPlaceClassPreview = (props: Props) => {
                         {full && "Lotado"}
                         {!full && (
                             <Text>
-                                {checkin ? "Confirmado" : "E ai, bora!?"}
+                                {checkin ? "Confirmado" : "Confirmar presença"}
                             </Text>
                         )}
                     </Text>

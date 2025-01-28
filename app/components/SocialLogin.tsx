@@ -1,11 +1,11 @@
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import React from "react";
 import Button from "@/app/components/Button";
 import { router } from "expo-router";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
 import { AntDesign, FontAwesome6 } from "@expo/vector-icons";
-import styles from "./styles";
+import Tokens from "@/constants/Tokens";
 
 const SocialLogin = () => {
     const hookTheme = useTheme() as ThemeProps;
@@ -46,6 +46,15 @@ const SocialLogin = () => {
             </Button>
         </View>
     );
+};
+
+const styles = (theme: PalleteProps) => {
+    return StyleSheet.create({
+        container: {
+            flexDirection: "row",
+            gap: Tokens.spacing[16]
+        }
+    });
 };
 
 export default SocialLogin;

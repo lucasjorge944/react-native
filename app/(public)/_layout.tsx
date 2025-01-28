@@ -30,6 +30,10 @@ const Layout = () => {
                 options={{ headerShown: false }}
             ></Stack.Screen>
             <Stack.Screen
+                name="signin/index"
+                options={{ headerShown: false }}
+            ></Stack.Screen>
+            <Stack.Screen
                 name="(modals)/google"
                 options={{ presentation: "modal", title: "Logar com Google" }}
             ></Stack.Screen>

@@ -1,49 +1,33 @@
 import { StyleSheet } from "react-native";
+import { PalleteProps } from "@/constants/Pallete";
+import Tokens from "@/constants/Tokens";
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        padding: 20
-    },
-    inputContainer: {
-        gap: 15,
-        marginTop: 20
-    },
-    title: {
-        fontSize: 24,
-        fontWeight: "bold",
-        color: "#1a1a1a",
-        marginBottom: 10
-    },
-    input: {
-        borderWidth: 1,
-        borderColor: "#ccc",
-        borderRadius: 5,
-        padding: 10,
-        fontSize: 16
-    },
-    button: {
-        backgroundColor: "#000",
-        padding: 15,
-        borderRadius: 5,
-        alignItems: "center",
-        marginTop: 10
-    },
-    buttonText: {
-        color: "#fff",
-        fontSize: 16,
-        fontWeight: "bold"
-    },
-    linkButton: {
-        alignItems: "center",
-        marginTop: 10
-    },
-    linkText: {
-        color: "#000",
-        fontSize: 14,
-        textDecorationLine: "underline"
-    }
-});
+const styles = (theme: PalleteProps) =>
+    StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: theme.background,
+            padding: Tokens.spacing[18]
+        },
+        content: {
+            flex: 1,
+            justifyContent: "space-between"
+        },
+        inputContainer: {
+            gap: Tokens.spacing[16],
+            marginTop: "20%",
+            flex: 1
+        },
+        formContainer: {
+            gap: Tokens.spacing[16],
+            flex: 1
+        },
+        title: {
+            fontSize: Tokens.fontSize[24],
+            fontWeight: 500,
+            color: theme.text,
+            marginBottom: Tokens.spacing[12]
+        }
+    });
 
 export default styles;

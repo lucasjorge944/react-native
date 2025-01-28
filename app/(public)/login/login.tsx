@@ -11,12 +11,10 @@ import {
 } from "react-native";
 import { ThemeProps, useTheme } from "../../context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
-import { useAuth } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { AntDesign, FontAwesome6 } from "@expo/vector-icons";
 import Input from "../../components/Input";
-import SocialLogin from "./components/SocialLogin";
-import Footer from "./components/Footer";
+
 import styles from "./styles";
 import Button from "@/app/components/Button";
 
@@ -111,9 +109,8 @@ const Login = () => {
                     <Button text="Entrar" onPress={handleSubmit(login)} />
                 </View>
                 <Text style={_styles.forgotPassword}>ou</Text>
-                <SocialLogin />
+
                 <View style={{ flex: 1 }} />
-                <Footer />
             </KeyboardAvoidingView>
         </TouchableWithoutFeedback>
     );

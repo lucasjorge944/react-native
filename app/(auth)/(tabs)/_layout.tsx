@@ -1,15 +1,15 @@
 import { Button } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
-import { useAuth } from "../../context/AuthContext";
 import { FontAwesome, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { ThemeProps, useTheme } from "@/app/context/ThemeContext";
 import { PalleteProps } from "@/constants/Pallete";
+import { useAuth } from "@clerk/clerk-expo";
 
 const Layout = () => {
     const hookTheme = useTheme() as ThemeProps;
     const theme = hookTheme.theme as PalleteProps;
-    const { onLogout, authState } = useAuth();
+    const { isSignedIn } = useAuth();
 
     return (
         <Tabs
@@ -23,7 +23,7 @@ const Layout = () => {
         >
             <Tabs.Screen
                 name="myspaces"
-                redirect={!authState?.authenticated}
+                redirect={!isSignedIn}
                 options={{
                     tabBarLabel: "Meus Espaços",
                     tabBarIcon: ({ color, size }) => (
@@ -37,7 +37,7 @@ const Layout = () => {
             />
             <Tabs.Screen
                 name="explore"
-                redirect={!authState?.authenticated}
+                redirect={!isSignedIn}
                 options={{
                     tabBarLabel: "Explorar",
                     tabBarIcon: ({ color, size }) => (
@@ -51,7 +51,7 @@ const Layout = () => {
             />
             <Tabs.Screen
                 name="profile"
-                redirect={!authState?.authenticated}
+                redirect={!isSignedIn}
                 options={{
                     tabBarLabel: "Perfil",
                     tabBarIcon: ({ color, size }) => (
@@ -61,9 +61,7 @@ const Layout = () => {
                             color={color}
                         />
                     ),
-                    headerRight: () => (
-                        <Button onPress={onLogout} title="Logout" />
-                    )
+                    headerRight: () => <Button title="Logout" />
                 }}
             />
         </Tabs>

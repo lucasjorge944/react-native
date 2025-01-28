@@ -11,13 +11,13 @@ const InitialLayout = () => {
     const { isSignedIn } = useAuth();
     const segments = useSegments();
     const router = useRouter();
-    console.log(isSignedIn);
+
     useEffect(() => {
         const inTabsGroup = segments[0] === "(auth)";
         if (isSignedIn && !inTabsGroup) {
             router.replace("/(auth)/(tabs)/myspaces");
         } else if (!isSignedIn) {
-            router.replace("/login");
+            router.replace("/signin");
         }
         setTimeout(SplashScreen.hideAsync, 2000);
     }, [isSignedIn]);
@@ -26,18 +26,19 @@ const InitialLayout = () => {
 };
 
 const RootLayoutNav = () => {
+    const publishableKey = process.env
+        .EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY as string;
+
+    if (!publishableKey) {
+        throw new Error("Missing Clerk Publishable Key");
+    }
+
     return (
-        <ClerkProvider
-            publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!}
-            tokenCache={tokenCache}
-        >
+        <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
             <ClerkLoaded>
                 <ThemeProvider>
-                    <StatusBar style="dark"></StatusBar>
+                    <StatusBar style="dark" />
                     <InitialLayout />
-                    {/* <AuthProvider>
-                    <InitialLayout />
-                </AuthProvider> */}
                 </ThemeProvider>
             </ClerkLoaded>
         </ClerkProvider>
